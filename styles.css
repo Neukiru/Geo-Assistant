@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#__next {
+  min-height: 100%;
+}
+
+nav.nextra-toc {
+  display: none !important;
+}
+
+.nextra-nav-container a {
+  color: black;
+  font-weight: 500 !important;
+}
+
+.text-white {
+  color: white !important
+}
+
+article {
+  padding: 0 0 !important;
+  /* background-image: linear-gradient(rgb(243, 244, 246), rgb(209, 213, 219)); */
+  --tw-bg-opacity: 1;
+  background-color: rgba(247,247,248,var(--tw-bg-opacity))
+}
+
+article main{
+  max-width:100% !important;
+}
+
+div.nx-mx-auto {
+  max-width: 100% !important
+}
+
+aside .sign-in {
+  display: flex;
+  margin-bottom: 10px;
+  background: black;
+  border-radius: 20px;
+  color: white;
+  justify-content: center;
+  padding-block: 0.25rem;
+}
+
+aside .sign-in a {
+  color: white;
+}
+
+aside .display-grid {
+  display: grid;
+}
+/* .docs-search > span {
+  width: 100%;
+}
+
+.algolia-autocomplete .algolia-docsearch-suggestion--category-header span {
+  display: inline-block;
+}
+.algolia-autocomplete .ds-dropdown-menu {
+  width: 500px;
+  min-width: 300px;
+  max-width: calc(100vw - 50px);
+}
+
+.dark .invert-on-dark {
+  filter: invert(1) brightness(1.8);
+}
+
+body {
+  background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 300px
+    ),
+    fixed 0 0 / 20px 20px radial-gradient(#d1d1d1 1px, transparent 0),
+    fixed 10px 10px / 20px 20px radial-gradient(#d1d1d1 1px, transparent 0);
+}
+
+.dark body {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #111 300px),
+    fixed 0 0 / 20px 20px radial-gradient(#313131 1px, transparent 0),
+    fixed 10px 10px / 20px 20px radial-gradient(#313131 1px, transparent 0);
+} */

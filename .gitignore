@@ -1,2 +1,6 @@
 .next
 node_modules
+*.DS_Store
+images/.DS_Store
+images/.DS_Store
+public/.DS_Store
