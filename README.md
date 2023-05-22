@@ -1,1 +1,1 @@
-# Managed Functions Docs 
+# Geo Assistant Docs 
