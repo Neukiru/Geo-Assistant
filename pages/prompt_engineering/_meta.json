@@ -1,4 +1,14 @@
 {
   "dashboard": "დეშბორდი",
-  "leaderboard":"ლიდერბორდი"
+  "leaderboard":"ლიდერბორდი",
+  "label": {
+    "type": "page",
+    "title": "",
+    "theme": {
+      "sidebar": false,
+      "toc": false,
+      "footer": false,
+      "typesetting": "article"
+    }
+  }
 }
