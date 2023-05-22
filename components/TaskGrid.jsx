@@ -1,7 +1,9 @@
 import React from 'react';
-import TaskCard from './TaskCard';
+import dynamic from 'next/dynamic';
+// import TaskCard from './TaskCard';
 import styles from './taskGrid.module.css'
 
+const TaskCard = dynamic(() => import('./TaskCard'));
 const TaskGrid = ({ tasks }) => {
   return (
     <div className={styles.taskGrid}>

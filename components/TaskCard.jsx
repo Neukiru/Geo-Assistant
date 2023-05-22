@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './taskGrid.module.css'
 
-const TaskCard = ({ id, title, description, nTasks }) => {
+const TaskCard = ({ id, title, description, nTasks, taskRoute }) => {
   return (
-    <a href='https://open-assistant.io/dashboard' className={styles.noUnderline}>
+    <a href="./label/assistantReply" className={styles.noUnderline}>
       <div id={id} className="chakra-card rounded-xl bg-white shadow">
         <div className="pt-5 pl-5 pr-5">
           <div className="mb-4 flex items-center justify-between">

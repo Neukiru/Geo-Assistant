@@ -1,14 +1,15 @@
 {
-  "dashboard": "დეშბორდი",
-  "leaderboard":"ლიდერბორდი",
+  "dashboard": "სამუშაო დაფა",
   "label": {
     "type": "page",
-    "title": "",
+    "title": "დაჭდევება",
     "theme": {
-      "sidebar": false,
+      "sidebar": true,
       "toc": false,
       "footer": false,
       "typesetting": "article"
     }
-  }
+  },
+  "leaderboard":"მოწინავეთა სია"
+  
 }

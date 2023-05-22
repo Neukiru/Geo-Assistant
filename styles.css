@@ -30,6 +30,10 @@ article main{
   max-width:100% !important;
 }
 
+div .nx-block{
+  display: none !important;
+}
+
 div.nx-mx-auto {
   max-width: 100% !important
 }

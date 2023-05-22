@@ -1,3 +1,4 @@
 {
- "assistantReply":"assistantReply"
+  "assistantReply": { "display": "hidden", "title": "ასისტენტის პასუხი" },
+  "AssistantResponse": { "display": "hidden" }
 }
