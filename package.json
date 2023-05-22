@@ -1,5 +1,5 @@
 {
-  "name": "docs",
+  "name": "geo-assistant",
   "version": "0.0.1",
   "description": "docs",
   "scripts": {
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/managedfunctions/docs.git"
+    "url": "git+https://github.com/Neukiru/Geo-Assistant.git"
   },
-  "author": "Doug Hudgeon <doug@hudgeon.com>",
+  "author": "Malkhaz Suladze <malkhazsuladze93@gmail.com>",
   "license": "",
   "bugs": {
-    "url": "https://github.com/managedfunctions/docs/issues"
+    "url": "https://github.com/managedfunctions/Geo-Assistant/issues"
   },
-  "homepage": "https://github.com/managedfunctions/docs#readme",
+  "homepage": "https://github.com/managedfunctions/Geo-Assistant#readme",
   "dependencies": {
     "@headlessui/react": "^1.7.8",
     "@mdx-js/react": "^2.3.0",
