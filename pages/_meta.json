@@ -7,9 +7,19 @@
       "layout": "full"
     }
   },
-  "blog": {
+  "prompt_engineering": {
     "type": "page",
-    "title": "Blog",
+    "title": "პრომპტ ინჟინერია",
+    "theme": {
+      "sidebar": true,
+      "toc": false,
+      "footer": false,
+      "typesetting": "article"
+    }
+  },
+  "dummy": {
+    "type": "page",
+    "title": "დებილი გვერდი",
     "theme": {
       "sidebar": true,
       "toc": false,

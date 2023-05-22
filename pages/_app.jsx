@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Managed Functions: Your white-labelled integration platform</title>
+        <title></title>
       </Head>
       <Component {...pageProps} />
     </>

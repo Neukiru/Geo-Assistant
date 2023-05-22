@@ -10,9 +10,9 @@ nav.nextra-toc {
   display: none !important;
 }
 
-.nextra-nav-container a {
-  color: black;
-  font-weight: 500 !important;
+.nextra-nav-container a:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(247,247,248,var(--tw-bg-opacity))
 }
 
 .text-white {
@@ -50,6 +50,10 @@ aside .sign-in a {
 
 aside .display-grid {
   display: grid;
+}
+
+.nextra-search{
+  display: none !important;
 }
 /* .docs-search > span {
   width: 100%;
