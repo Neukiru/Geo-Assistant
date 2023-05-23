@@ -22,8 +22,7 @@ nav.nextra-toc {
 article {
   padding: 0 0 !important;
   /* background-image: linear-gradient(rgb(243, 244, 246), rgb(209, 213, 219)); */
-  --tw-bg-opacity: 1;
-  background-color: rgba(247,247,248,var(--tw-bg-opacity))
+  background-color: #f9fafb;
 }
 
 article main{
