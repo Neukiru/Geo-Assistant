@@ -9,7 +9,7 @@ const Chat = () => {
     { content: 'How can I assist you?', isUser: true },
     { content: 'I have a question.', isUser: false },
     { content: 'Sure, go ahead!', isUser: true },
-    { content: '...', isUser: false },
+    { content: "In React, you can define the style of a React element using inline styles or by applying CSS classes to the element. Here's how you can define the style of a React element using different approaches:", isUser: false },
     { content: 'Could you please provide more details?', isUser: true },
   ];
 

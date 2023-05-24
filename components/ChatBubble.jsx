@@ -2,15 +2,17 @@ import React from 'react'
 
 const ChatBubble = ({ message, isUser }) => {
     
-  const bubbleBgClassName = isUser ? 'bg-gray-100' : 'bg-white'
+  const bubbleBgClassName = isUser ? 'bg-gray-800' : 'dark-bg-444654'
+  const bubbleTextColor = isUser ? 'text-slate-300' : 'text-slate-200'
+  
   return (
-    <div className={`group w-full border-b border-black/10 ${bubbleBgClassName} text-gray-800 dark:border-gray-900/50 dark:bg-[#444654] dark:text-gray-100`}>
+    <div className={`group w-full border-b ${bubbleBgClassName} dark-border-900 dark:bg-[#444654] dark:text-gray-100`}>
       <div className="m-auto flex gap-4 p-4 text-base md:max-w-2xl md:gap-6 md:py-6 lg:max-w-xl lg:px-0 xl:max-w-3xl">
         <div className="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]">
           <div className="flex flex-grow flex-col gap-3">
             <div className="flex min-h-[20px] flex-col items-start gap-4 whitespace-pre-wrap break-words">
               <div className="markdown prose dark:prose-invert light w-full break-words">
-                <p> {message}</p>
+                <p className={`${bubbleTextColor} text-base`}> {message}</p>
               </div>
             </div>
           </div>
