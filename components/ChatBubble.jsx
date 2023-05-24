@@ -3,7 +3,6 @@ import React from 'react'
 const ChatBubble = ({ message, isUser }) => {
     
   const bubbleBgClassName = isUser ? 'bg-gray-100' : 'bg-white'
-  console.log({bubbleBgClassName})
   return (
     <div className={`group w-full border-b border-black/10 ${bubbleBgClassName} text-gray-800 dark:border-gray-900/50 dark:bg-[#444654] dark:text-gray-100`}>
       <div className="m-auto flex gap-4 p-4 text-base md:max-w-2xl md:gap-6 md:py-6 lg:max-w-xl lg:px-0 xl:max-w-3xl">

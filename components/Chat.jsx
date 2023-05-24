@@ -2,6 +2,7 @@ import React from 'react';
 import ChatBubble from './ChatBubble';
 
 const Chat = () => {
+
   const messages = [
     { content: 'Hello!', isUser: true },
     { content: 'Hi there!', isUser: false },
