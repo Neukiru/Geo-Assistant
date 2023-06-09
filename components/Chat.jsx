@@ -28,8 +28,8 @@ const Chat = () => {
   ]
 
   return (
-    <div className="relative h-full flex flex-col h-screen">
-      <div className="h-full flex-1 overflow-hidden">
+    <div className="relative flex flex-col h-screen overflow-hidden">
+      <div className="flex-1 overflow-hidden">
         <div className="scrollable-content">
           {messages.map((message, index) => (
             <ChatBubble

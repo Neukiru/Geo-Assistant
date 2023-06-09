@@ -87,7 +87,26 @@ aside .display-grid {
 /* Handle on hover */
 /* ::-webkit-scrollbar-thumb:hover {
   background: #555; 
-} */
+}  */
+
+/* Custom scrollbar */
+.msgboxarea::-webkit-scrollbar {
+  width: 10px;
+}
+
+.msgboxarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.msgboxarea::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 8px;
+  background-clip: content-box;
+}
+
+.msgboxarea::-webkit-scrollbar-thumb:hover {
+  background-color: grey;
+}
 
 .scrollable-content {
   position: relative;
