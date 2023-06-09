@@ -18,7 +18,7 @@ const MessageBar = () => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 w-full border-t md:border-t-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:bg-vert-light-gradient dark:bg-gray-800 md:!bg-transparent dark:md:bg-vert-dark-gradient pt-2">
+    <div className="absolute h-60 bottom-0 left-0 w-full border-t md:border-t-0 border-white/20 md:border-transparent md:border-transparent bg-gray-800 md:!bg-transparent md:bg-vert-dark-gradient pt-2">
       <form className="stretch mx-2 mt-1 flex flex-row gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl">
         <div className="relative flex h-full flex-1 items-stretch md:flex-col" role="presentation">
           <div className="flex flex-col w-full py-[10px] flex-grow md:py-4 md:pl-4 relative border border-black/10 border-gray-900/50 text-white bg-gray-700 rounded-xl shadow-xs shadow-xs">
@@ -28,12 +28,13 @@ const MessageBar = () => {
               data-id="root"
               rows="1"
               placeholder="Send a message."
-              className="m-0 w-full resize-none border-0 bg-transparent p-0 pr-10 ring-0 focus:ring-0 focus-visible:ring-0 focus:outline-none bg-transparent md:pr-12 pl-3 md:pl-0"
+              className="m-0 w-full resize-none border-0 bg-transparent p-0 pr-10 ring-0 focus:ring-0 focus-visible:ring-0 bg-transparent md:pr-12 pl-3 md:pl-0"
               style={{
                 display: "relative",
                 maxHeight: `${maxBarHeight}px`, 
                 height: height, 
-                overflowY: 'auto' 
+                overflowY: 'auto',
+                boxShadow: 'none'
               }}
               onInput={handleInput}
             />

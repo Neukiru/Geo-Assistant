@@ -14,7 +14,8 @@
       "sidebar": true,
       "toc": false,
       "footer": false,
-      "typesetting": "article"
+      "typesetting": "article",
+      "pagination": false
     }
   },
   "dummy": {

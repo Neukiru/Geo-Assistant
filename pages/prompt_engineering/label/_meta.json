@@ -1,4 +1,4 @@
 {
-  "assistantReply": { "display": "hidden", "title": "ასისტენტის პასუხი" },
+  "assistantReply": { "display": "hidden", "title": "ასისტენტის პასუხი", "theme": {"pagination": false} },
   "AssistantResponse": { "display": "hidden" }
 }
