@@ -1,5 +1,6 @@
 import React from 'react';
 import ChatBubble from './ChatBubble';
+import MessageBar from './MessageBar';
 
 const Chat = () => {
 
@@ -11,10 +12,20 @@ const Chat = () => {
     { content: 'Sure, go ahead!', isUser: true },
     { content: "In React, you can define the style of a React element using inline styles or by applying CSS classes to the element. Here's how you can define the style of a React element using different approaches:", isUser: false },
     { content: 'Could you please provide more details?', isUser: true },
+    { content: 'I have a question.', isUser: false },
+    { content: 'Sure, go ahead!', isUser: true },
+    { content: 'I have a question.', isUser: false },
+    { content: 'Sure, go ahead!', isUser: true },
+    { content: 'I have a question.', isUser: false },
+    { content: 'Sure, go ahead!', isUser: true },
+    { content: 'I have a question.', isUser: false },
+    { content: 'Sure, go ahead!', isUser: true },
+    { content: 'I have a question.', isUser: false },
+    { content: 'Sure, go ahead!', isUser: true }
   ];
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col relative">
       {messages.map((message, index) => (
         <ChatBubble
           key={index}
@@ -22,6 +33,7 @@ const Chat = () => {
           isUser={message.isUser}
         />
       ))}
+      <MessageBar/>
     </div>
   );
 };
