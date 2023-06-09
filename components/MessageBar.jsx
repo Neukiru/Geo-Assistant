@@ -10,8 +10,24 @@ const MessageBar = () => {
   }, [])
 
   const handleInput = () => {
-    setHeight(`${Math.min(textareaRef.current.scrollHeight, maxBarHeight)}px`)
-  }
+    let newHeight;
+    
+    // Temporarily shrink textarea to measure the real scrollHeight
+    textareaRef.current.style.height = 'auto';
+    
+    // If real scrollHeight is less than maxBarHeight, use it as the new height
+    if (textareaRef.current.scrollHeight < maxBarHeight) {
+      newHeight = `${textareaRef.current.scrollHeight}px`;
+    } 
+    // If real scrollHeight is more than maxBarHeight, use maxBarHeight as the new height
+    else {
+      newHeight = `${maxBarHeight}px`;
+    }
+    
+    // Apply newHeight to the textarea
+    textareaRef.current.style.height = newHeight;
+    setHeight(newHeight);
+  };
 
   return (
     <div
