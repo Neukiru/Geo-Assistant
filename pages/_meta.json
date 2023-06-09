@@ -9,7 +9,7 @@
   },
   "prompt_engineering": {
     "type": "page",
-    "title": "პრომპტ ინჟინერია",
+    "title": "ცოდნის ინჟინერია",
     "theme": {
       "sidebar": true,
       "toc": false,
