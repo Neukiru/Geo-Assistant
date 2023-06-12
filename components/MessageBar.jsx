@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 
 const MessageBar = () => {
   const [height, setHeight] = useState('24px')
+  const [inputValue, setInputValue] = useState('')
   const textareaRef = useRef(null)
   const maxBarHeight = 200
 
@@ -27,6 +28,13 @@ const MessageBar = () => {
     // Apply newHeight to the textarea
     textareaRef.current.style.height = newHeight;
     setHeight(newHeight);
+    setInputValue(textareaRef.current.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Perform your desired action when the form button is clicked
+    console.log('Form button clicked!');
   };
 
   return (
@@ -34,19 +42,21 @@ const MessageBar = () => {
       className="absolute bottom-0 left-0 w-full border-t border-white/20 bg-gray-800 pt-2 md:border-t-0 md:border-transparent md:border-transparent md:!bg-transparent md:bg-vert-dark-gradient"
       style={{ minHeight: `${height}` }}
     >
-      <form className="stretch mx-2 mt-1 flex flex-row gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl">
+      <form className="stretch mx-2 mt-1 flex flex-row gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl"
+      onSubmit={handleSubmit}
+      >
         <div
           className="relative flex h-full flex-1 items-stretch md:flex-col"
           role="presentation"
         >
-          <div className="shadow-xs shadow-xs relative flex w-full flex-grow flex-col rounded-xl border border-black/10 border-gray-900/50 bg-gray-700 py-[10px] text-white md:py-4 md:pl-4">
+          <div className="shadow-xs relative flex w-full flex-grow flex-col rounded-xl border border-black/10 border-gray-900/50 bg-gray-700 py-[10px] text-white md:py-4 md:pl-4">
             <textarea
               ref={textareaRef}
               tabIndex="0"
               data-id="root"
               rows="1"
               placeholder="Send a message."
-              className="msgboxarea m-0 w-full resize-none border-0 bg-transparent bg-transparent p-0 pr-10 pl-3 ring-0 focus:ring-0 focus-visible:ring-0 md:pr-12 md:pl-0"
+              className="msgboxarea m-0 w-full resize-none border-0 bg-transparent bg-transparent p-0 pr-10 pl-3 ring-0 focus:ring-0 focus-visible:ring-0 md:pl-0"
               style={{
                 display: 'relative',
                 maxHeight: `${maxBarHeight}px`,
@@ -56,7 +66,10 @@ const MessageBar = () => {
               }}
               onInput={handleInput}
             />
-            <button className="enabled:bg-green absolute right-2 bottom-1.5 rounded-md p-1 text-white transition-colors hover:bg-purple-900 disabled:text-gray-400 disabled:opacity-40 disabled:hover:bg-transparent md:bottom-3 md:right-3 md:p-2">
+            <button
+            type="submit"
+            className="absolute right-2 bottom-1.5 rounded-md p-1 text-white transition-colors hover:bg-purple-900 disabled:text-gray-400 disabled:opacity-40 disabled:hover:bg-transparent md:bottom-3 md:right-3 md:p-2"
+            disabled={!inputValue}>
               <span data-state="closed">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

@@ -38,6 +38,7 @@ const Chat = () => {
               isUser={message.isUser}
             />
           ))}
+          <div className='group h-56 w-full border-b bg-gray-800 dark-border-900 bg-gray-800'></div>
         </div>
       </div>
       <MessageBar />
