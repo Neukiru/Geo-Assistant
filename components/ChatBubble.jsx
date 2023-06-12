@@ -7,7 +7,7 @@ const ChatBubble = ({ message, isUser }) => {
   
   return (
     <div className={`group w-full border-b ${bubbleBgClassName} dark-border-900 dark:bg-[#444654] dark:text-gray-100`}>
-      <div className="m-auto flex gap-4 p-4 text-base md:max-w-2xl md:gap-6 md:py-6 lg:max-w-xl lg:px-0 xl:max-w-screen-xl">
+      <div className="m-auto flex gap-4 p-4 text-base md:max-w-2xl md:gap-6 md:py-6 lg:max-w-xl lg:px-0 md:max-w-2xl xl:max-w-3xl 3xl:max-w-screen-xl">
         <div className="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]">
           <div className="flex flex-grow flex-col gap-3">
             <div className="flex min-h-[20px] flex-col items-start gap-4 whitespace-pre-wrap break-words">

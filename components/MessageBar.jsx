@@ -73,7 +73,7 @@ const MessageBar = () => {
               </span>
             </button>
           </div>
-          <div className="h-36"></div>
+          <div className="h-32"></div>
         </div>
       </form>
     </div>
