@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 
-const MessageBar = () => {
+const MessageBar = ({ onNewMessage }) => {
   const [height, setHeight] = useState('24px')
   const [inputValue, setInputValue] = useState('')
   const textareaRef = useRef(null)
@@ -33,6 +33,9 @@ const MessageBar = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    onNewMessage(inputValue, false);
+    setInputValue('');
+    textareaRef.current.value = '';
     // Perform your desired action when the form button is clicked
     console.log('Form button clicked!');
   };
@@ -86,7 +89,7 @@ const MessageBar = () => {
               </span>
             </button>
           </div>
-          <div className="h-32"></div>
+          <div className="h-20"></div>
         </div>
       </form>
     </div>
