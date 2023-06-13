@@ -12,7 +12,10 @@ module.exports = {
     extend: {
       backgroundImage: {
         'vert-light-gradient': 'linear-gradient(180deg, hsla(0, 0%, 100%, 0) 13.94%, #fff 54.73%)',
-        'vert-dark-gradient': 'linear-gradient(180deg, rgba(53, 55, 64, 0), #353740 45.85%)',
+        'vert-dark-gradient': 'linear-gradient(180deg,rgba(53,55,64,0),#1f2230ed 58.85%)',
+      },
+      screens: {
+        '3xl': '1600px',
       },
     },
   },

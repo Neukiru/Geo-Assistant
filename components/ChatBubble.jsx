@@ -1,17 +1,29 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleUser } from '@fortawesome/free-regular-svg-icons';
 
 const ChatBubble = ({ message, isUser }) => {
     
   const bubbleBgClassName = isUser ? 'bg-gray-800' : 'dark-bg-444654'
   const bubbleTextColor = isUser ? 'text-slate-300' : 'text-slate-200'
+
+  const userIconStyle = {
+    width: '35px',
+    height: '35px',
+    color: '#b514ff'
+  };
   
   return (
     <div className={`group w-full border-b ${bubbleBgClassName} dark-border-900 dark:bg-[#444654] dark:text-gray-100`}>
       <div className="m-auto flex gap-4 p-4 text-base md:max-w-2xl md:gap-6 md:py-6 lg:max-w-xl lg:px-0 md:max-w-2xl xl:max-w-2xl 3xl:max-w-screen-xl">
+      <div className='h-11 w-11'>
+      <FontAwesomeIcon icon={faCircleUser} style={userIconStyle} hidden={!isUser}/>
+      <img src={'/img/BOG_lion.png'} alt="ა" hidden={isUser}/>
+      </div>
         <div className="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]">
           <div className="flex flex-grow flex-col gap-3">
             <div className="flex min-h-[20px] flex-col items-start gap-4 whitespace-pre-wrap break-words">
-              <div className="markdown prose dark:prose-invert light w-full break-words">
+              <div className="markdown prose prose-invert light w-full break-words">
                 <p className={`${bubbleTextColor} text-base`}> {message}</p>
               </div>
             </div>
