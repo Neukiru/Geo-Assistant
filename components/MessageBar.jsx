@@ -52,6 +52,11 @@ const MessageBar = ({ onNewMessage }) => {
           className="relative flex h-full flex-1 items-stretch md:flex-col"
           role="presentation"
         >
+          <div className='h-full w-full pl-4 hover:opacity-100 opacity-0'>
+            <div className='h-8 w-8 mb-1'>
+            <img src={'/img/knowledge_base.png'} alt="knowledge base"/>
+            </div>
+          </div>
           <div className="shadow-xs relative flex w-full flex-grow flex-col rounded-xl border border-black/10 border-gray-900/50 bg-gray-700 py-[10px] text-white md:py-4 md:pl-4">
             <textarea
               ref={textareaRef}
