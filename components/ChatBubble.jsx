@@ -72,7 +72,7 @@ const ChatBubble = ({ message, isUser, knowledgeContext }) => {
           <div className="flex flex-grow flex-col gap-3">
             <div className="flex min-h-[20px] flex-col items-start gap-4 whitespace-pre-wrap break-words">
               <div className="markdown prose prose-invert light w-full break-words">
-                <p className={`${bubbleTextColor} text-base`}> {messageInputValue}</p>
+                <p className={`chatBubbleText ${bubbleTextColor} text-lg`}> {messageInputValue}</p>
               </div>
             </div>
           </div>

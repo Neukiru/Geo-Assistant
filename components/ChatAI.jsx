@@ -2,12 +2,27 @@ import React from 'react'
 import { useState, useEffect, useRef } from 'react'
 import ChatBubble from './ChatBubble'
 import MessageBar from './MessageBar'
+import socketIOClient from "socket.io-client";
 
+const ENDPOINT = "http://localhost:8000"
 
 const Chat = ({ initialMessages }) => {
   const [messages, setMessages] = useState(initialMessages)
   const [initialLoad, setInitialLoad] = useState(true)
+  const [socket, setSocket] = useState(null);
   const scrollRef = useRef(null)
+  
+
+  useEffect(() => {
+    const socket = socketIOClient(ENDPOINT,{path:"/ws/socket.io/"});
+
+    console.log('aaqqq')
+    socket.on("connect", () => {
+      console.log("Connected to the Socket.IO server");
+    });
+
+    setSocket(socket);
+  },[])
   
   const addMessage = (newMessage, isUser, knowledgeContext) => {
     if (initialLoad) setInitialLoad(false)
@@ -17,6 +32,7 @@ const Chat = ({ initialMessages }) => {
     ])
   }
 
+  
   // Scroll to bottom whenever messages change
   useEffect(() => {
     if (scrollRef.current !== null && !initialLoad) {
