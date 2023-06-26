@@ -8,11 +8,11 @@ const Chat = ({ initialMessages }) => {
   const [initialLoad, setInitialLoad] = useState(true)
   const scrollRef = useRef(null)
 
-  const addMessage = (newMessage, isUser) => {
+  const addMessage = (newMessage, isUser, knowledgeContext) => {
     if (initialLoad) setInitialLoad(false)
     setMessages((prevMessages) => [
       ...prevMessages,
-      { content: newMessage, isUser: isUser },
+      { content: newMessage, isUser: isUser, knowledgeContext: knowledgeContext },
     ])
   }
 
@@ -33,6 +33,7 @@ const Chat = ({ initialMessages }) => {
               key={index}
               message={message.content}
               isUser={message.isUser}
+              knowledgeContext={message.knowledgeContext}
             />
           ))}
           <div
