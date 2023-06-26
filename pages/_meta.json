@@ -15,14 +15,15 @@
       "toc": false,
       "footer": false,
       "typesetting": "article",
-      "pagination": false
+      "pagination": false,
+      "breadcrumb": false
     }
   },
-  "dummy": {
+  "AIchat": {
     "type": "page",
-    "title": "დებილი გვერდი",
+    "title": "ესაუბრე ასისტენტს",
     "theme": {
-      "sidebar": true,
+      "sidebar": false,
       "toc": false,
       "footer": false,
       "typesetting": "article"
