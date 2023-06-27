@@ -2,54 +2,80 @@ import React from 'react'
 import { useState, useEffect, useRef } from 'react'
 import ChatBubble from './ChatBubble'
 import MessageBar from './MessageBar'
-import socketIOClient from "socket.io-client";
+import socketIOClient from 'socket.io-client'
 
-const ENDPOINT = "http://localhost:8000"
+const ENDPOINT = 'http://localhost:8000'
 
 const Chat = ({ initialMessages }) => {
-  const [messages, setMessages] = useState(initialMessages);
-  const [initialLoad, setInitialLoad] = useState(true);
-  const [socket, setSocket] = useState(null);
-  const scrollRef = useRef(null);
-  const isUser = true;
-  
+  const [messages, setMessages] = useState(initialMessages)
+  const [initialLoad, setInitialLoad] = useState(true)
+  const [socket, setSocket] = useState(null)
+  const scrollRef = useRef(null)
+  const isUser = true
 
   useEffect(() => {
-    const socket = socketIOClient(ENDPOINT,{path:"/ws/socket.io/"});
+    const socket = socketIOClient(ENDPOINT, { path: '/ws/socket.io/' })
 
-    socket.on("connect", () => {
-        console.log("Connected to the Socket.IO server");
-      });
-  
-      socket.on("assistant_response", (serverMessage) => {
+    socket.on('connect', () => {
+      console.log('Connected to the Socket.IO server')
+    })
+
+    socket.on('assistant_response', (serverMessage) => {
+      if (serverMessage['message_start']) {
         setMessages((prevMessages) => [
           ...prevMessages,
-          { content: serverMessage['message'], isUser: false, knowledgeContext: {} },
-        ]);
-      });
-  
-      socket.on("disconnect", () => {
-        console.log("Socket.IO connection closed");
-      });
-  
-      setSocket(socket);
-  },[])
-  
+          {
+            content: serverMessage['message'],
+            isUser: false,
+            knowledgeContext: {},
+          },
+        ])
+      } else {
+        setMessages((prevMessages) => {
+          let newMessages = [...prevMessages]
+
+          if (newMessages.length > 0) {
+            let lastMessage = { ...newMessages[newMessages.length - 1] }
+            lastMessage.content = lastMessage.content + serverMessage['message']
+            newMessages[newMessages.length - 1] = lastMessage
+          } else {
+            newMessages.push({
+              content: serverMessage['message'],
+              isUser: false,
+              knowledgeContext: {},
+            })
+          }
+
+          return newMessages
+        })
+        console.log(messages)
+      }
+    })
+
+    socket.on('disconnect', () => {
+      console.log('Socket.IO connection closed')
+    })
+
+    setSocket(socket)
+  }, [])
+
   const addMessage = (newMessage, isUser, knowledgeContext) => {
     if (initialLoad) setInitialLoad(false)
     setMessages((prevMessages) => [
       ...prevMessages,
-      { content: newMessage, isUser: isUser, knowledgeContext: knowledgeContext },
+      {
+        content: newMessage,
+        isUser: isUser,
+        knowledgeContext: knowledgeContext,
+      },
     ])
 
     // Send message to backend if it's from user
     if (isUser && socket) {
-        console.log('aaaaaaaaaaqqqqqqqq')
-        socket.emit('message', { message: newMessage });
-      }
+      socket.emit('message', { message: newMessage })
+    }
   }
 
-  
   // Scroll to bottom whenever messages change
   useEffect(() => {
     if (scrollRef.current !== null && !initialLoad) {
@@ -64,7 +90,7 @@ const Chat = ({ initialMessages }) => {
           {/* <div className='group w-full border-b bg-gray-800 dark-border-900' style={{"height":"65px"}}></div> */}
           {messages.map((message, index) => (
             <ChatBubble
-              key={index}
+              key={`${index}-${message.content}`}
               message={message.content}
               isUser={message.isUser}
               knowledgeContext={message.knowledgeContext}
