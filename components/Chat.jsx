@@ -43,7 +43,7 @@ const Chat = ({ initialMessages }) => {
           ></div>
         </div>
       </div>
-      <MessageBar onNewMessage={addMessage} />
+      <MessageBar onNewMessage={addMessage} isUser={isUser} />
     </div>
   )
 }

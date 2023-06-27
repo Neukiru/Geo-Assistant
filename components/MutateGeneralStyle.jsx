@@ -6,7 +6,7 @@ const MutateGeneralStyle = () => {
   useEffect(() => {
     const mainElement = document.querySelector('main')
     const paddingElement = document.querySelector('.nx-w-64')
-    console.log(router.asPath)
+
     if (router.asPath === '/prompt_engineering/label/assistantReply') {
       mainElement.classList.remove('md:nx-px-12', 'nx-px-6')
     }

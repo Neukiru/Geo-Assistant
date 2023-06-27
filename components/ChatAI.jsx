@@ -7,21 +7,32 @@ import socketIOClient from "socket.io-client";
 const ENDPOINT = "http://localhost:8000"
 
 const Chat = ({ initialMessages }) => {
-  const [messages, setMessages] = useState(initialMessages)
-  const [initialLoad, setInitialLoad] = useState(true)
+  const [messages, setMessages] = useState(initialMessages);
+  const [initialLoad, setInitialLoad] = useState(true);
   const [socket, setSocket] = useState(null);
-  const scrollRef = useRef(null)
+  const scrollRef = useRef(null);
+  const isUser = true;
   
 
   useEffect(() => {
     const socket = socketIOClient(ENDPOINT,{path:"/ws/socket.io/"});
 
-    console.log('aaqqq')
     socket.on("connect", () => {
-      console.log("Connected to the Socket.IO server");
-    });
-
-    setSocket(socket);
+        console.log("Connected to the Socket.IO server");
+      });
+  
+      socket.on("assistant_response", (serverMessage) => {
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { content: serverMessage['message'], isUser: false, knowledgeContext: {} },
+        ]);
+      });
+  
+      socket.on("disconnect", () => {
+        console.log("Socket.IO connection closed");
+      });
+  
+      setSocket(socket);
   },[])
   
   const addMessage = (newMessage, isUser, knowledgeContext) => {
@@ -30,6 +41,12 @@ const Chat = ({ initialMessages }) => {
       ...prevMessages,
       { content: newMessage, isUser: isUser, knowledgeContext: knowledgeContext },
     ])
+
+    // Send message to backend if it's from user
+    if (isUser && socket) {
+        console.log('aaaaaaaaaaqqqqqqqq')
+        socket.emit('message', { message: newMessage });
+      }
   }
 
   
@@ -59,7 +76,7 @@ const Chat = ({ initialMessages }) => {
           ></div>
         </div>
       </div>
-      <MessageBar onNewMessage={addMessage} />
+      <MessageBar onNewMessage={addMessage} isUser={isUser} />
     </div>
   )
 }
