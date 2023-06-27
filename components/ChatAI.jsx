@@ -48,7 +48,6 @@ const Chat = ({ initialMessages }) => {
 
           return newMessages
         })
-        console.log(messages)
       }
     })
 
