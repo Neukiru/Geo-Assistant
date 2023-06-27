@@ -154,7 +154,7 @@ const MessageBar = ({ onNewMessage, isUser }) => {
               tabIndex="0"
               data-id="root"
               rows="1"
-              placeholder="Send a message."
+              placeholder="გააგზავნე მესიჯი."
               className="msgboxarea m-0 w-full resize-none border-0 bg-transparent bg-transparent p-0 pr-10 pl-3 ring-0 focus:ring-0 focus-visible:ring-0 md:pl-0"
               style={{
                 display: 'relative',

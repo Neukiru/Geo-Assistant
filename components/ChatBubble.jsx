@@ -60,7 +60,7 @@ const ChatBubble = ({ message, isUser, knowledgeContext }) => {
       className={`group w-full border-b ${bubbleBgClassName} dark-border-900 dark:bg-[#444654] dark:text-gray-100`}
     >
       <div className="m-auto flex gap-4 p-4 text-base md:max-w-2xl md:max-w-2xl md:gap-6 md:py-6 lg:max-w-xl lg:px-0 xl:max-w-2xl 3xl:max-w-screen-xl">
-        <div className="h-11 w-11">
+        <div className="h-10 w-10">
           <FontAwesomeIcon
             icon={faCircleUser}
             style={userIconStyle}
