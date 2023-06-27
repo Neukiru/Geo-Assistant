@@ -4,7 +4,7 @@ import ChatBubble from './ChatBubble'
 import MessageBar from './MessageBar'
 import socketIOClient from 'socket.io-client'
 
-const ENDPOINT = 'http://localhost:8000'
+const ENDPOINT = 'https://geo-assistant-backend.onrender.com/'
 
 const Chat = ({ initialMessages }) => {
   const [messages, setMessages] = useState(initialMessages)
