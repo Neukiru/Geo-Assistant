@@ -8,6 +8,7 @@ const Chat = ({ initialMessages }) => {
   const [messages, setMessages] = useState(initialMessages)
   const [initialLoad, setInitialLoad] = useState(true)
   const scrollRef = useRef(null)
+  const isUser = false
   
   const addMessage = (newMessage, isUser, knowledgeContext) => {
     if (initialLoad) setInitialLoad(false)
