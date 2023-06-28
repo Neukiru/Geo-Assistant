@@ -45,7 +45,7 @@ const Chat = ({ initialMessages }) => {
     })
       
     })
-
+   
     socket.on('disconnect', () => {
       console.log('Socket.IO connection closed')
     })
