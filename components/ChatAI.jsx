@@ -4,7 +4,8 @@ import ChatBubble from './ChatBubble'
 import MessageBar from './MessageBar'
 import socketIOClient from 'socket.io-client'
 
-const ENDPOINT = 'https://geo-assistant-backend.onrender.com/'
+// const ENDPOINT = 'https://geo-assistant-backend.onrender.com/'
+const ENDPOINT = 'http://localhost:8000'
 
 const Chat = ({ initialMessages }) => {
   const [messages, setMessages] = useState(initialMessages)
@@ -21,34 +22,28 @@ const Chat = ({ initialMessages }) => {
     })
 
     socket.on('assistant_response', (serverMessage) => {
-      if (serverMessage['message_start']) {
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          {
+      
+    setMessages((prevMessages) => {
+        let newMessages = [...prevMessages]
+
+        if (newMessages.length > 0) {
+        let lastMessage = { ...newMessages[newMessages.length - 1] }
+        lastMessage.content = lastMessage.content + serverMessage['message']
+        lastMessage.isBlinking = serverMessage['message_end']
+        newMessages[newMessages.length - 1] = lastMessage
+        
+        } else {
+        newMessages.push({
             content: serverMessage['message'],
             isUser: false,
             knowledgeContext: {},
-          },
-        ])
-      } else {
-        setMessages((prevMessages) => {
-          let newMessages = [...prevMessages]
-
-          if (newMessages.length > 0) {
-            let lastMessage = { ...newMessages[newMessages.length - 1] }
-            lastMessage.content = lastMessage.content + serverMessage['message']
-            newMessages[newMessages.length - 1] = lastMessage
-          } else {
-            newMessages.push({
-              content: serverMessage['message'],
-              isUser: false,
-              knowledgeContext: {},
-            })
-          }
-
-          return newMessages
+            isBlinking: serverMessage['blinking']
         })
-      }
+        }
+
+        return newMessages
+    })
+      
     })
 
     socket.on('disconnect', () => {
@@ -58,7 +53,7 @@ const Chat = ({ initialMessages }) => {
     setSocket(socket)
   }, [])
 
-  const addMessage = (newMessage, isUser, knowledgeContext) => {
+  const addMessage = (newMessage, isUser, knowledgeContext, isBlinking) => {
     if (initialLoad) setInitialLoad(false)
     setMessages((prevMessages) => [
       ...prevMessages,
@@ -66,6 +61,7 @@ const Chat = ({ initialMessages }) => {
         content: newMessage,
         isUser: isUser,
         knowledgeContext: knowledgeContext,
+        isBlinking: isBlinking
       },
     ])
 
@@ -93,6 +89,7 @@ const Chat = ({ initialMessages }) => {
               message={message.content}
               isUser={message.isUser}
               knowledgeContext={message.knowledgeContext}
+              isBlinking={message.isBlinking ? true:false}
             />
           ))}
           <div
@@ -101,7 +98,7 @@ const Chat = ({ initialMessages }) => {
           ></div>
         </div>
       </div>
-      <MessageBar onNewMessage={addMessage} isUser={isUser} />
+      <MessageBar onNewMessage={addMessage} isUser={isUser} requiresReponse={true} />
     </div>
   )
 }

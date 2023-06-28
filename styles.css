@@ -194,13 +194,13 @@ body {
   height: 100%;
 }
 
-p::after {
+.chatBubbleText::after {
   content: "";
   display: none;
   width: 0.65rem;
   height: 1.1rem;
   background-color: white;
-  margin-left: 5px;
+  margin-left: 0px;
   animation: blinking 1s infinite;
   padding-top: 10px;
 }
@@ -213,4 +213,8 @@ p::after {
 
 .show-blinking-rectangle::after {
   display: inline-block;
+}
+
+.hide-blinking-rectangle::after {
+  display: none;
 }

@@ -27,7 +27,7 @@ const knowledgeBubbleStyle = {
   },
 }
 
-const MessageBar = ({ onNewMessage, isUser }) => {
+const MessageBar = ({ onNewMessage, isUser, requiresReponse }) => {
   const [height, setHeight] = useState('24px')
   const [inputValue, setInputValue] = useState('')
   const [modalInputValue, setModalInputValue] = useState('')
@@ -72,6 +72,9 @@ const MessageBar = ({ onNewMessage, isUser }) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     onNewMessage(inputValue, isUser, modalInputValue)
+    if(requiresReponse){
+      onNewMessage('', !isUser, modalInputValue, true)
+    }
     setInputValue('')
     textareaRef.current.value = ''
     setModalInputValue('')
@@ -186,7 +189,7 @@ const MessageBar = ({ onNewMessage, isUser }) => {
               </span>
             </button>
           </div>
-          <div className="h-20"></div>
+          <div className="h-14"></div>
         </div>
       </form>
     </div>

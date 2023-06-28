@@ -28,9 +28,11 @@ const knowledgeBubbleStyle = {
   },
 }
 
-const ChatBubble = ({ message, isUser, knowledgeContext }) => {
+const ChatBubble = ({ message, isUser, knowledgeContext, isBlinking }) => {
   const bubbleBgClassName = isUser ? 'bg-gray-800' : 'dark-bg-444654'
   const bubbleTextColor = isUser ? 'text-slate-300' : 'text-slate-200'
+  const afterBlinking = isBlinking? 'show-blinking-rectangle':'hide-blinking-rectangle'
+  // console.log(isBlinking)
   const [modalInputValue, setModalInputValue] = useState(knowledgeContext)
   const [messageInputValue, setMessageInputValue] = useState(message)
   const [modalIsOpen, setModalIsOpen] = useState(false)
@@ -72,7 +74,7 @@ const ChatBubble = ({ message, isUser, knowledgeContext }) => {
           <div className="flex flex-grow flex-col gap-3">
             <div className="flex min-h-[20px] flex-col items-start gap-4 whitespace-pre-wrap break-words">
               <div className="markdown prose prose-invert light w-full break-words">
-                <p className={`chatBubbleText ${bubbleTextColor} text-lg`}> {messageInputValue}</p>
+                <p className={`chatBubbleText ${bubbleTextColor} ${afterBlinking} text-lg`}> {messageInputValue}</p>
               </div>
             </div>
           </div>

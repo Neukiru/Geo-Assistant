@@ -36,6 +36,7 @@ const Chat = ({ initialMessages }) => {
               message={message.content}
               isUser={message.isUser}
               knowledgeContext={message.knowledgeContext}
+              isBlinking={false}
             />
           ))}
           <div
