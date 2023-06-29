@@ -19,17 +19,18 @@ const Chat = ({ initialMessages }) => {
 
     socket.on('connect', () => {
       console.log('Connected to the Socket.IO server')
+      socket.emit("initialize_agent")
     })
 
     socket.on('assistant_response', (serverMessage) => {
       
     setMessages((prevMessages) => {
         let newMessages = [...prevMessages]
-
+        console.log(serverMessage['message_end'])
         if (newMessages.length > 0) {
         let lastMessage = { ...newMessages[newMessages.length - 1] }
         lastMessage.content = lastMessage.content + serverMessage['message']
-        lastMessage.isBlinking = serverMessage['message_end']
+        lastMessage.isBlinking = !serverMessage['message_end']
         newMessages[newMessages.length - 1] = lastMessage
         
         } else {
