@@ -1,0 +1,6 @@
+.model-selector .pressed div:first-child {
+  transform: scale(1);
+}
+.model-selector div:first-child {
+  will-change: transform;
+}

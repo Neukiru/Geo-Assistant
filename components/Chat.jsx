@@ -41,7 +41,7 @@ const Chat = ({ initialMessages }) => {
           ))}
           <div
             ref={scrollRef}
-            className="dark-border-900 group h-56 w-full border-b bg-gray-800"
+            className="border-none group h-56 w-full bg-gray-800"
           ></div>
         </div>
       </div>

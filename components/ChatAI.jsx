@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect, useRef } from 'react'
 import ChatBubble from './ChatBubble'
 import MessageBar from './MessageBar'
+import ModelSelector from './ModelSelector'
 import socketIOClient from 'socket.io-client'
 
 const ENDPOINT = 'https://geo-assistant-backend.onrender.com/'
@@ -11,6 +12,7 @@ const Chat = ({ initialMessages }) => {
   const [messages, setMessages] = useState(initialMessages)
   const [initialLoad, setInitialLoad] = useState(true)
   const [socket, setSocket] = useState(null)
+  const [isModelSelectorVisible,setModelSelectorVisible] = useState(true)
   const scrollRef = useRef(null)
   const isUser = true
 
@@ -19,34 +21,31 @@ const Chat = ({ initialMessages }) => {
 
     socket.on('connect', () => {
       console.log('Connected to the Socket.IO server')
-      socket.emit("initialize_agent")
+      socket.emit('initialize_agent')
     })
 
     socket.on('assistant_response', (serverMessage) => {
-      
-    setMessages((prevMessages) => {
+      setMessages((prevMessages) => {
         let newMessages = [...prevMessages]
         console.log(serverMessage['message_end'])
         if (newMessages.length > 0) {
-        let lastMessage = { ...newMessages[newMessages.length - 1] }
-        lastMessage.content = lastMessage.content + serverMessage['message']
-        lastMessage.isBlinking = !serverMessage['message_end']
-        newMessages[newMessages.length - 1] = lastMessage
-        
+          let lastMessage = { ...newMessages[newMessages.length - 1] }
+          lastMessage.content = lastMessage.content + serverMessage['message']
+          lastMessage.isBlinking = !serverMessage['message_end']
+          newMessages[newMessages.length - 1] = lastMessage
         } else {
-        newMessages.push({
+          newMessages.push({
             content: serverMessage['message'],
             isUser: false,
             knowledgeContext: {},
-            isBlinking: serverMessage['blinking']
-        })
+            isBlinking: serverMessage['blinking'],
+          })
         }
 
         return newMessages
+      })
     })
-      
-    })
-   
+
     socket.on('disconnect', () => {
       console.log('Socket.IO connection closed')
     })
@@ -62,7 +61,7 @@ const Chat = ({ initialMessages }) => {
         content: newMessage,
         isUser: isUser,
         knowledgeContext: knowledgeContext,
-        isBlinking: isBlinking
+        isBlinking: isBlinking,
       },
     ])
 
@@ -83,23 +82,31 @@ const Chat = ({ initialMessages }) => {
     <div className="relative flex h-auto flex-col overflow-hidden">
       <div className="relative flex-1 overflow-hidden">
         <div className="scrollable-content static relative">
-          {/* <div className='group w-full border-b bg-gray-800 dark-border-900' style={{"height":"65px"}}></div> */}
+          <div className="flex items-center justify-center">
+          <ModelSelector 
+          isModelSelectorVisible={isModelSelectorVisible} />
+          </div>
           {messages.map((message, index) => (
             <ChatBubble
               key={`${index}-${message.content}`}
               message={message.content}
               isUser={message.isUser}
               knowledgeContext={message.knowledgeContext}
-              isBlinking={message.isBlinking ? true:false}
+              isBlinking={message.isBlinking ? true : false}
             />
           ))}
           <div
             ref={scrollRef}
-            className="dark-border-900 group h-56 w-full border-b bg-gray-800"
+            className="group h-56 w-full border-none bg-gray-800"
           ></div>
         </div>
       </div>
-      <MessageBar onNewMessage={addMessage} isUser={isUser} requiresReponse={true} />
+      <MessageBar
+        onNewMessage={addMessage}
+        onSetModelSelectorVisible={setModelSelectorVisible}
+        isUser={isUser}
+        requiresReponse={true}
+      />
     </div>
   )
 }

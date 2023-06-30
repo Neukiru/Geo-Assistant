@@ -27,7 +27,7 @@ const knowledgeBubbleStyle = {
   },
 }
 
-const MessageBar = ({ onNewMessage, isUser, requiresReponse }) => {
+const MessageBar = ({ onNewMessage, onSetModelSelectorVisible, isUser, requiresReponse }) => {
   const [height, setHeight] = useState('24px')
   const [inputValue, setInputValue] = useState('')
   const [modalInputValue, setModalInputValue] = useState('')
@@ -71,6 +71,7 @@ const MessageBar = ({ onNewMessage, isUser, requiresReponse }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    onSetModelSelectorVisible(false)
     onNewMessage(inputValue, isUser, modalInputValue)
     if(requiresReponse){
       onNewMessage('', !isUser, modalInputValue, true)
