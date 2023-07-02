@@ -166,7 +166,7 @@ li.nx-flex.nx-flex-col a::selection{
 .scrollable-content {
   position: relative;
   overflow-y: auto;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 64px);
 }
 
 /* Custom scrollbar */
