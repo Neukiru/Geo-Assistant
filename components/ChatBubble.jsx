@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser } from '@fortawesome/free-regular-svg-icons'
 import Modal from 'react-modal'
+import MarkedLowlightRenderer from './MarkedLowLight'
 
 Modal.setAppElement('#__next')
 
@@ -31,7 +32,9 @@ const knowledgeBubbleStyle = {
 const ChatBubble = ({ message, isUser, knowledgeContext, isBlinking }) => {
   const bubbleBgClassName = isUser ? 'bg-gray-800' : 'dark-bg-444654'
   const bubbleTextColor = isUser ? 'text-slate-300' : 'text-slate-200'
-  const afterBlinking = isBlinking? 'show-blinking-rectangle':'hide-blinking-rectangle'
+  const afterBlinking = isBlinking
+    ? 'show-blinking-rectangle'
+    : 'hide-blinking-rectangle'
   // console.log(isBlinking)
   const [modalInputValue, setModalInputValue] = useState(knowledgeContext)
   const [modalIsOpen, setModalIsOpen] = useState(false)
@@ -73,7 +76,10 @@ const ChatBubble = ({ message, isUser, knowledgeContext, isBlinking }) => {
           <div className="flex flex-grow flex-col gap-3">
             <div className="flex min-h-[20px] flex-col items-start gap-4 whitespace-pre-wrap break-words">
               <div className="markdown prose prose-invert light w-full break-words">
-                <p className={`chatBubbleText ${bubbleTextColor} ${afterBlinking} text-lg`}> {message}</p>
+                {/* <p className={`chatBubbleText ${bubbleTextColor} ${afterBlinking} text-lg`}> {message}</p> */}
+                <div className={`chatBubbleText ${bubbleTextColor} ${afterBlinking} text-lg`}>
+                  <MarkedLowlightRenderer markdown={message} />
+                </div>
               </div>
             </div>
           </div>
