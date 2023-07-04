@@ -5,8 +5,8 @@ import MessageBar from './MessageBar'
 import ModelSelector from './ModelSelector'
 import socketIOClient from 'socket.io-client'
 
-// const ENDPOINT = 'https://geo-assistant-backend.onrender.com/'
-const ENDPOINT = 'http://localhost:8000'
+const ENDPOINT = 'https://geo-assistant-backend.onrender.com/'
+// const ENDPOINT = 'http://localhost:8000'
 
 const Chat = ({ initialMessages }) => {
   const [messages, setMessages] = useState(initialMessages)
