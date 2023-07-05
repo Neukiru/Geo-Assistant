@@ -27,12 +27,7 @@ const knowledgeBubbleStyle = {
   },
 }
 
-const handleKeyDown = (event) => {
-  if (event.key === 'Enter' && !event.shiftKey) {
-    event.preventDefault();
-    setIsEnterPressed(true);
-  }
-};
+
 
 
 const MessageBar = ({ onNewMessage, onSetModelSelectorVisible, isUser, requiresReponse }) => {
@@ -44,6 +39,13 @@ const MessageBar = ({ onNewMessage, onSetModelSelectorVisible, isUser, requiresR
   const textareaRef = useRef(null)
   const modalTextAreaRef = useRef(null)
   const maxBarHeight = 200
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      setIsEnterPressed(true);
+    }
+  };
 
   useEffect(() => {
     setHeight(`${Math.min(textareaRef.current.scrollHeight, maxBarHeight)}px`)
