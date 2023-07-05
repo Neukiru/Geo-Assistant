@@ -17,7 +17,7 @@ const renderer = {
     }
     return (
       <div>
-        <div className="mb-4 rounded-md bg-black">
+        <div className="mb-4 rounded-md bg-black mt-2">
           <div className="relative flex items-center justify-between rounded-t-md bg-gray-800 px-4 py-2 font-sans text-xs text-gray-200">
             <span>{lang}</span>
             <button className="ml-auto flex gap-2">
