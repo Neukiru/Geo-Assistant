@@ -35,7 +35,6 @@ const MessageBar = ({ onNewMessage, onSetModelSelectorVisible, isUser, requiresR
   const [inputValue, setInputValue] = useState('')
   const [modalInputValue, setModalInputValue] = useState('')
   const [modalIsOpen, setModalIsOpen] = useState(false)
-  const [isEnterPressed, setIsEnterPressed] = useState(false);
   const textareaRef = useRef(null)
   const modalTextAreaRef = useRef(null)
   const maxBarHeight = 200
@@ -43,22 +42,13 @@ const MessageBar = ({ onNewMessage, onSetModelSelectorVisible, isUser, requiresR
   const handleKeyDown = (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
-      setIsEnterPressed(true);
+      handleSubmit(event)
     }
   };
 
   useEffect(() => {
     setHeight(`${Math.min(textareaRef.current.scrollHeight, maxBarHeight)}px`)
   }, [])
-
-  useEffect(() => {
-    setHeight(`${Math.min(textareaRef.current.scrollHeight, maxBarHeight)}px`);
-
-    if (isEnterPressed) {
-      handleSubmit();
-      setIsEnterPressed(false);
-    }
-  }, [isEnterPressed]);
 
   const openModal = () => {
     setModalIsOpen(true)
@@ -101,6 +91,7 @@ const MessageBar = ({ onNewMessage, onSetModelSelectorVisible, isUser, requiresR
     setModalInputValue('')
     // modalTextAreaRef.current.value = ''
     // Perform your desired action when the form button is clicked
+    textareaRef.current.style.height = 'auto'
     console.log('Form button clicked!')
   }
 
