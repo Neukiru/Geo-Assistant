@@ -77,8 +77,8 @@ const ChatBubble = ({ message, isUser, knowledgeContext, isBlinking }) => {
             <div className="flex min-h-[20px] flex-col items-start gap-4 whitespace-pre-wrap break-words">
               <div className="markdown prose prose-invert light w-full break-words">
                 {/* <p className={`chatBubbleText ${bubbleTextColor} ${afterBlinking} text-lg`}> {message}</p> */}
-                <div className={`chatBubbleText ${bubbleTextColor} ${afterBlinking} text-lg`}>
-                  <MarkedLowlightRenderer markdown={message} />
+                <div className={`chatBubbleText ${bubbleTextColor} ${afterBlinking} text-2xl`}>
+                  <MarkedLowlightRenderer markdown={message} className/>
                 </div>
               </div>
             </div>

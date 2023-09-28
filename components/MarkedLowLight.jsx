@@ -62,7 +62,7 @@ const renderer = {
 
 const MarkedLowlightRenderer = ({ markdown }) => {
   return (
-    <div>
+    <div className='inline-block'>
       <Markdown value={markdown} renderer={renderer} />
     </div>
   )
